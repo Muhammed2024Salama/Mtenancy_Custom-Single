@@ -10,7 +10,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $users = User::where('tenant_id',Auth::user()->tenant_id)->get();
+    $users = User::tenanting()->get();
     return view('dashboard', get_defined_vars());
 })->middleware(['auth', 'verified'])->name('dashboard');
 
